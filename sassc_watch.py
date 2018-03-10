@@ -38,7 +38,12 @@ class MyHandler(PatternMatchingEventHandler):
         sass_content = ""
         with open(event.src_path, "r") as f:
             sass_content = f.read()
-        css_content = sass.compile(string=sass_content)
+        try:
+            css_content = sass.compile(string=sass_content)
+        except sass.CompileError:
+            print("Compilation error occured")
+            print("========================================================")
+            return
         with open(self.destination, "w") as f:
             f.write(css_content)
         print("Modified contents of {}".format(self.destination))

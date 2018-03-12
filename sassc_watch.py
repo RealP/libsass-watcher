@@ -1,5 +1,8 @@
 """A wrapper for libsass to generate css when a sass file is modified.
 
+Usage:
+    python sassc_watcher.py yoursassfile.scss yourcssfile.css
+
 Only tested on Windows
 """
 from __future__ import print_function
